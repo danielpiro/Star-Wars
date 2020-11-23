@@ -15,9 +15,7 @@ import bgu.spl.mics.application.passiveObjects.Diary;
  */
 public class R2D2Microservice extends MicroService {
 
-	private long duration;
-	
-    public R2D2Microservice(long duration) {
+    public R2D2Microservice() {
         super("R2D2");
     }
 

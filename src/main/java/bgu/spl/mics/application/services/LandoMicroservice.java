@@ -13,9 +13,7 @@ import bgu.spl.mics.application.passiveObjects.Diary;
  */
 public class LandoMicroservice  extends MicroService {
 
-	private long duration;
-	
-    public LandoMicroservice(long duration) {
+    public LandoMicroservice() {
         super("Lando");
     }
 

@@ -35,12 +35,12 @@ public class FutureTest {
         String str = "someResult";
         future.resolve(str);
         assertTrue(future.isDone());
-        assertTrue(str.equals(future.get()));
+        assertEquals(future.get(), str);
     }
 
     @Test
     public void testIsDone(){
-        String str = "someResult";
+        String str = "Result";
         assertFalse(future.isDone());
         future.resolve(str);
         assertTrue(future.isDone());
@@ -49,10 +49,15 @@ public class FutureTest {
     @Test
     public void testGetWithTimeOut() throws InterruptedException
     {
-        assertFalse(future.isDone());
-        future.get(100,TimeUnit.MILLISECONDS);
-        assertFalse(future.isDone());
-        future.resolve("foo");
-        assertEquals(future.get(100,TimeUnit.MILLISECONDS),"foo");
+        try {
+            assertFalse(future.isDone());
+            future.get(100, TimeUnit.MILLISECONDS);
+            assertFalse(future.isDone());
+            future.resolve("test");
+            assertEquals(future.get(100, TimeUnit.MILLISECONDS), "test");
+        }
+        catch (Exception ex){
+            throw new InterruptedException("connection timeout");
+        }
     }
 }

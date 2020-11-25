@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: bgu.spl.mics.FutureTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec <<< FAILURE!
+bgu.spl.mics.FutureTest.testResolve()  Time elapsed: 0.001 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "bgu.spl.mics.Future.resolve(Object)" because "this.future" is null
+	at bgu.spl.mics.FutureTest.testResolve(FutureTest.java:33)
+
+bgu.spl.mics.FutureTest.testIsDone()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "bgu.spl.mics.Future.isDone()" because "this.future" is null
+	at bgu.spl.mics.FutureTest.testIsDone(FutureTest.java:41)
+
+bgu.spl.mics.FutureTest.testGet()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "bgu.spl.mics.Future.isDone()" because "this.future" is null
+	at bgu.spl.mics.FutureTest.testGet(FutureTest.java:24)
+
+bgu.spl.mics.FutureTest.testGetWithTimeOut()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.InterruptedException: connection timeout
+	at bgu.spl.mics.FutureTest.testGetWithTimeOut(FutureTest.java:57)
+

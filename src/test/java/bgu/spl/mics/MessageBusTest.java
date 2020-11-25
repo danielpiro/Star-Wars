@@ -3,14 +3,11 @@ package bgu.spl.mics;
 import bgu.spl.mics.application.messages.AttackEvent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.AfterEach;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MessageBusTest {
     MessageBus msg;
-    Message message;
     MicroService micro;
     AttackEvent attackEvent;
 
@@ -21,11 +18,11 @@ class MessageBusTest {
             protected void initialize() { }
         };
         attackEvent = new AttackEvent();
-       }
+    }
 
 
     @Test
-    void subscribeEvent() {
+    public void subscribeEvent() {
         try {
             msg.subscribeEvent((Class<? extends Event<String>>) micro.getClass(), micro);
         }catch (Exception ex){
@@ -34,7 +31,7 @@ class MessageBusTest {
     }
 
     @Test
-    void subscribeBroadcast() {
+    public void subscribeBroadcast() {
         try {
             msg.subscribeBroadcast((Class<? extends Broadcast>) micro.getClass(), micro);
         }catch (Exception ex){
@@ -43,11 +40,11 @@ class MessageBusTest {
     }
 
     @Test
-    void complete() {
+    public void complete() {
     }
 
     @Test
-    void sendBroadcast() {
+    public void sendBroadcast() {
         try {
             msg.sendBroadcast((Broadcast) attackEvent);
         }catch (Exception ex){
@@ -56,7 +53,7 @@ class MessageBusTest {
     }
 
     @Test
-    void sendEvent() {
+    public void sendEvent() {
         try {
             msg.sendEvent(attackEvent);
         }catch (Exception ex){
@@ -65,7 +62,7 @@ class MessageBusTest {
     }
 
     @Test
-    void register() {
+    public void register() {
         msg.register(micro);
         try {
             msg.awaitMessage(micro);
@@ -76,18 +73,16 @@ class MessageBusTest {
     }
 
     @Test
-    void unregister() {
+    public void unregister() {
         msg.unregister(micro);
         try{
             msg.awaitMessage(micro);
         }catch (Exception ex){
             System.out.println("the process was not unregistered ");
         }
-
     }
-
     @Test
-    void awaitMessage() throws InterruptedException {
-        assertTrue(msg.awaitMessage(micro) != null);
+    public void awaitMessage() throws InterruptedException {
+        assertNotNull(msg.awaitMessage(micro));
     }
 }
